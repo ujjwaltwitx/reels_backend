@@ -22,15 +22,15 @@ def getDownloadUrl(request):
         'TE': 'trailers'
     };
     url = '{0}/?__a=1&__d=dis'.format(request.data['share_link'])
-    # url = '{0}/?__a=1&__d=dis'.format('https://www.instagram.com/reel/CkwmGreAE6x')
+    print(url)
     response = requests.get(url=url, headers=headers)
-    shotcodeMedia = response.json()['items'][0]
-    videoUrl = shotcodeMedia['video_versions'][0]['url']
-    videoId = shotcodeMedia['code']
-    videoThumbnailUrl = shotcodeMedia['image_versions2']['candidates'][0]['url']
-    accountThumbnailUrl = shotcodeMedia['user']['profile_pic_url']
-    accountName = shotcodeMedia['user']['username']
-    viewCount = shotcodeMedia['view_count']
+    shotcodeMedia = response.json()['graphql']['shortcode_media']
+    videoUrl = shotcodeMedia['video_url']
+    videoId = shotcodeMedia['shortcode']
+    videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
+    accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
+    accountName = shotcodeMedia['owner']['username']
+    viewCount = shotcodeMedia['video_view_count']
 
     data = {
         'videoUrl' :videoUrl,
