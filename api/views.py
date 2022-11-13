@@ -5,7 +5,7 @@ import requests
 # Create your views here.
 @api_view(['POST'])
 def getDownloadUrl(request):
-    cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; ds_user_id=26458373780; datr=4GA1Y3KJvIiXaytRyP-qewxa; dpr=1.25; csrftoken=6QiG5luupwYujvumjNBDoqDRtMMXfXGg; sessionid=26458373780%3ARMoeo3bidC6tAO%3A15%3AAYcpm0my0eVtAFgJp3JjBwJATSzBZPVdE4MCey8HAw; shbid="19750\05426458373780\0541699629613:01f7ce82ace8bfae96ff1d0958f769e2eda821ec6a7b01363d2b4ee5f820ea7cb1f5338e"; shbts="1668093613\05426458373780\0541699629613:01f7b1c4a65bceac87da78cf7081490eee7d68ac780cc721eebfb8502f67311270283d1e"; rur="CLN\05426458373780\0541699629705:01f70387211e8ff1ab4beca5f8ceead6424d608f88ebfc53fac173fa0a4f54f5d405d767'
+    cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; ds_user_id=26458373780; datr=4GA1Y3KJvIiXaytRyP-qewxa; dpr=1.25; csrftoken=uuv25RUoHjldJiqjw6XkQyG8dohHNdyH; sessionid=26458373780:zxJ1mCYV5frLAs:0:AYdWnbTtCAOpCpFdatL9PqiJXL0BgWv_X6PyMkcysw; shbid="19750\05426458373780\0541699900272:01f701e0bd207b2afeddaa16ad021a7cb482673b62cba2eb3d005bba57c30bbbd441afcf"; shbts="1668364272\05426458373780\0541699900272:01f74eb9cc711169bc4cb7eff33ae89a840895c203dc41fe716f74d1ff0aba0f0b009780"; rur="PRN\05426458373780\0541699900309:01f74df34712705ade4764d7a4b0be54f7842646a235f2d43c2cfe904b91386453720b07"'
     headers = {
         'Host': 'www.instagram.com',
         'User-Agent': 'Mozilla',
@@ -21,7 +21,8 @@ def getDownloadUrl(request):
         'Cache-Control': 'max-age=0',
         'TE': 'trailers'
     }
-    url = '{0}/?__a=1&__d=dis'.format(request.data['share_link']) 
+    url = '{0}/?__a=1&__d=dis'.format(request.data.get('share_link', False))
+    # print(request)
     response = requests.get(url=url, headers=headers)
     data = {}
     try:
