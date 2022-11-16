@@ -5,7 +5,7 @@ import requests
 # Create your views here.
 @api_view(['POST'])
 def getDownloadUrl(request):
-    cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; shbid="19750\05426458373780\0541699900272:01f701e0bd207b2afeddaa16ad021a7cb482673b62cba2eb3d005bba57c30bbbd441afcf"; shbts="1668364272\05426458373780\0541699900272:01f74eb9cc711169bc4cb7eff33ae89a840895c203dc41fe716f74d1ff0aba0f0b009780"; dpr=1; csrftoken=HcKs8Erj3Zs2i40yZKT0kSl8WIVboTEM; ds_user_id=56375154046; sessionid=56375154046:VITdM8W4K5B3DY:3:AYe7zKfZ2LPkRtOqrzgaoRq7LzcA1afKY1v6Pf9IJQ; rur="LDC\05456375154046\0541700134622:01f73525a150608e260cdb522c39c981dbe60afe75d4a64d556c719f08d9614ee6c2e3ea"'
+    cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; shbid="19750\05426458373780\0541699900272:01f701e0bd207b2afeddaa16ad021a7cb482673b62cba2eb3d005bba57c30bbbd441afcf"; shbts="1668364272\05426458373780\0541699900272:01f74eb9cc711169bc4cb7eff33ae89a840895c203dc41fe716f74d1ff0aba0f0b009780"; dpr=1; ds_user_id=56375154046; csrftoken=cDMywqGrDwPkadRi2DaWh0AszlHW1t8q; sessionid=56375154046:wDa7o5j0R1ntYm:18:AYeguvdAzcvHA9hYsOHH0fMiSW_fPLYAxa0qWhGdaQ; rur="EAG\05456375154046\0541700156093:01f70de6dd9cb5cf424432e0febc7319528096cea52a3c0970df67c53c37c0e35484c3a2"'
     headers = {
         'Host': 'www.instagram.com',
         'User-Agent': 'Mozilla',
