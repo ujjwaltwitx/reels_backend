@@ -3,14 +3,12 @@ from rest_framework.decorators import api_view
 import requests
 import utility_functions
 
-# cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; shbid="19750\05426458373780\0541699900272:01f701e0bd207b2afeddaa16ad021a7cb482673b62cba2eb3d005bba57c30bbbd441afcf"; shbts="1668364272\05426458373780\0541699900272:01f74eb9cc711169bc4cb7eff33ae89a840895c203dc41fe716f74d1ff0aba0f0b009780"; dpr=1; ds_user_id=56375154046; csrftoken=vriswhTYhDz5mNhsPHcPgWY8kZNJGFIJ; sessionid=56375154046:srSoSCAJXFGdHL:23:AYfUsQDpDPUbtK_GLgd-DFbJsajuNTpNVeH45jhn0g; rur="LDC\05456375154046\0541700296857:01f794d2535c02ebc3b2a68e0c39486c87f7a3b33f7b47632271ee0a1540b267dd3be620"'
-# cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; shbid="19750\05426458373780\0541699900272:01f701e0bd207b2afeddaa16ad021a7cb482673b62cba2eb3d005bba57c30bbbd441afcf"; shbts="1668364272\05426458373780\0541699900272:01f74eb9cc711169bc4cb7eff33ae89a840895c203dc41fe716f74d1ff0aba0f0b009780"; dpr=1; ds_user_id=56375154046; csrftoken=vriswhTYhDz5mNhsPHcPgWY8kZNJGFIJ; sessionid=56375154046:srSoSCAJXFGdHL:23:AYfUsQDpDPUbtK_GLgd-DFbJsajuNTpNVeH45jhn0g; rur="LDC\05456375154046\0541700296857:01f794d2535c02ebc3b2a68e0c39486c87f7a3b33f7b47632271ee0a1540b267dd3be620"'
-cookie = "ujjwal"
+cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; dpr=1.25; csrftoken=0C9AISnZ5ubwhXojnpOGnCoMm4EW5NUB; ds_user_id=26458373780; sessionid=26458373780:0h0xFaAnJ1pT6a:12:AYfqctEhcvIk-7LF1ojsIkmHQcWkhuCQ1fZ7oIprvQ; shbid="19750\05426458373780\0541700510763:01f76302e8e36649e18a2b91fe063d58f3b61e9ee0cc45ab5f5e4f6e795fc88353d9003b"; shbts="1668974763\05426458373780\0541700510763:01f779df1fe28fba7203acc109c7d26af13e105a19e189aba49689b81be433d77bec8333"; rur="PRN\05426458373780\0541700511387:01f79050d8f9ec314c8099db515ea5dfb8992dc6ef61c76fe507c4c2e210d0451d04697f"'
+
 # Create your views here.
 @api_view(['POST'])
 def getDownloadUrl(request):
     response = ''
-    # cookie = utility_functions.get_cookie()
     headers = {
         'Host': 'www.instagram.com',
         'User-Agent': 'Mozilla',
@@ -30,60 +28,61 @@ def getDownloadUrl(request):
     response = requests.get(url=url, headers=headers)
     data = {}
 
-    shotcodeMedia = response.json()['graphql']['shortcode_media']
-    videoUrl = shotcodeMedia['video_url']
-    videoId = shotcodeMedia['shortcode']
-    videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
-    accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
-    accountName = shotcodeMedia['owner']['username']
-    viewCount = shotcodeMedia['video_view_count']
-    data = {
-        'videoUrl' :videoUrl,
-        'videoId':videoId,
-        'videoThumbnailUrl' : videoThumbnailUrl,
-        'accountThumbnailUrl' : accountThumbnailUrl,
-        'accountName': accountName,
-        'viewCount':viewCount
-    }
-    # try:
-    #     shotcodeMedia = response.json()['graphql']['shortcode_media']
-    #     videoUrl = shotcodeMedia['video_url']
-    #     videoId = shotcodeMedia['shortcode']
-    #     videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
-    #     accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
-    #     accountName = shotcodeMedia['owner']['username']
-    #     viewCount = shotcodeMedia['video_view_count']
-    #     data = {
-    #         'videoUrl' :videoUrl,
-    #         'videoId':videoId,
-    #         'videoThumbnailUrl' : videoThumbnailUrl,
-    #         'accountThumbnailUrl' : accountThumbnailUrl,
-    #         'accountName': accountName,
-    #         'viewCount':viewCount
-    #     }
-    # except:
-    #     data = {
-    #         'error' : "cant fetch data from the server"
-    #     }
-    # try:
-    #     shotcodeMedia = response.json()['items'][0]
-    #     videoUrl = shotcodeMedia['video_versions'][0]['url']
-    #     videoId = shotcodeMedia['code']
-    #     videoThumbnailUrl = shotcodeMedia['image_versions2']['candidates'][0]['url']
-    #     accountThumbnailUrl = shotcodeMedia['user']['profile_pic_url']
-    #     accountName = shotcodeMedia['user']['username']
-    #     viewCount = shotcodeMedia['view_count']
+    # shotcodeMedia = response.json()['graphql']['shortcode_media']
+    # videoUrl = shotcodeMedia['video_url']
+    # videoId = shotcodeMedia['shortcode']
+    # videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
+    # accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
+    # accountName = shotcodeMedia['owner']['username']
+    # viewCount = shotcodeMedia['video_view_count']
+    # data = {
+    #     'videoUrl' :videoUrl,
+    #     'videoId':videoId,
+    #     'videoThumbnailUrl' : videoThumbnailUrl,
+    #     'accountThumbnailUrl' : accountThumbnailUrl,
+    #     'accountName': accountName,
+    #     'viewCount':viewCount
+    # }
+    try:
+        shotcodeMedia = response.json()['graphql']['shortcode_media']
+        videoUrl = shotcodeMedia['video_url']
+        videoId = shotcodeMedia['shortcode']
+        videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
+        accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
+        accountName = shotcodeMedia['owner']['username']
+        viewCount = shotcodeMedia['video_view_count']
+        data = {
+            'videoUrl' :videoUrl,
+            'videoId':videoId,
+            'videoThumbnailUrl' : videoThumbnailUrl,
+            'accountThumbnailUrl' : accountThumbnailUrl,
+            'accountName': accountName,
+            'viewCount':viewCount
+        }
+    except:
+        data = {
+            'error' : "cant fetch data from the server"
+        }
+    try:
+        shotcodeMedia = response.json()['items'][0]
+        videoUrl = shotcodeMedia['video_versions'][0]['url']
+        videoId = shotcodeMedia['code']
+        videoThumbnailUrl = shotcodeMedia['image_versions2']['candidates'][0]['url']
+        accountThumbnailUrl = shotcodeMedia['user']['profile_pic_url']
+        accountName = shotcodeMedia['user']['username']
+        viewCount = shotcodeMedia['view_count']
 
-    #     data = {
-    #         'videoUrl' :videoUrl,
-    #         'videoId':videoId,
-    #         'videoThumbnailUrl' : videoThumbnailUrl,
-    #         'accountThumbnailUrl' : accountThumbnailUrl,
-    #         'accountName': accountName,
-    #         'viewCount':viewCount
-    #     }
-    # except:
-    #     data = {
-    #         'error' : "cant fetch data from the server"
-    #     }
+        data = {
+            'videoUrl' :videoUrl,
+            'videoId':videoId,
+            'videoThumbnailUrl' : videoThumbnailUrl,
+            'accountThumbnailUrl' : accountThumbnailUrl,
+            'accountName': accountName,
+            'viewCount':viewCount
+        }
+    except:
+        data = {
+            'error' : "cant fetch data from the server"
+        }
+
     return Response(data)
