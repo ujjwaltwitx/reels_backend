@@ -1,13 +1,21 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 import requests
+import schedule
 import utility_functions
 
-cookie = r'mid=YzVfxQALAAGY8R6FBhcA1jK-TXpG; ig_did=56D9408D-72BD-4FF0-AA5E-2D0A21385822; ig_nrcb=1; datr=4GA1Y3KJvIiXaytRyP-qewxa; dpr=1.25; csrftoken=0C9AISnZ5ubwhXojnpOGnCoMm4EW5NUB; ds_user_id=26458373780; sessionid=26458373780:0h0xFaAnJ1pT6a:12:AYfqctEhcvIk-7LF1ojsIkmHQcWkhuCQ1fZ7oIprvQ; shbid="19750\05426458373780\0541700510763:01f76302e8e36649e18a2b91fe063d58f3b61e9ee0cc45ab5f5e4f6e795fc88353d9003b"; shbts="1668974763\05426458373780\0541700510763:01f779df1fe28fba7203acc109c7d26af13e105a19e189aba49689b81be433d77bec8333"; rur="PRN\05426458373780\0541700511387:01f79050d8f9ec314c8099db515ea5dfb8992dc6ef61c76fe507c4c2e210d0451d04697f"'
+cookie = r'csrftoken=xNtrN8kd9oDiRF8q1NU20pqOUOTL9lMC;ds_user_id=56375154046;ig_did=0387AE91-4A44-4517-84B8-69E5EECBDDB2;mid=Y3sWuAAEAAHETLD9KjRko81qdnKx;rur="LDC\05456375154046\0541700547130:01f776af8ba46c74d661153c1026775ef599eb56e11d45fe67e1bc8a30d098d89b103ae0";sessionid=56375154046%3AZfXe9XzuNT263g%3A10%3AAYd2Ou73p0ijNYG1iNb_JopygsnyhBT4GTKnCG6TUw;'
+def set_cookie():
+    global cookie
+    cookie = utility_functions.get_cookie()
+
+
+schedule.every(12).hours.do(set_cookie)
 
 # Create your views here.
 @api_view(['POST'])
 def getDownloadUrl(request):
+    schedule.run_pending()
     response = ''
     headers = {
         'Host': 'www.instagram.com',
@@ -27,22 +35,6 @@ def getDownloadUrl(request):
     url = '{0}/?__a=1&__d=dis'.format(request.data.get('share_link', False))
     response = requests.get(url=url, headers=headers)
     data = {}
-
-    # shotcodeMedia = response.json()['graphql']['shortcode_media']
-    # videoUrl = shotcodeMedia['video_url']
-    # videoId = shotcodeMedia['shortcode']
-    # videoThumbnailUrl = shotcodeMedia['display_resources'][2]['src']
-    # accountThumbnailUrl = shotcodeMedia['owner']['profile_pic_url']
-    # accountName = shotcodeMedia['owner']['username']
-    # viewCount = shotcodeMedia['video_view_count']
-    # data = {
-    #     'videoUrl' :videoUrl,
-    #     'videoId':videoId,
-    #     'videoThumbnailUrl' : videoThumbnailUrl,
-    #     'accountThumbnailUrl' : accountThumbnailUrl,
-    #     'accountName': accountName,
-    #     'viewCount':viewCount
-    # }
     try:
         shotcodeMedia = response.json()['graphql']['shortcode_media']
         videoUrl = shotcodeMedia['video_url']
