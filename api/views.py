@@ -4,13 +4,12 @@ import requests
 import schedule
 import utility_functions
 
-cookie = r'csrftoken=xNtrN8kd9oDiRF8q1NU20pqOUOTL9lMC;ds_user_id=56375154046;ig_did=0387AE91-4A44-4517-84B8-69E5EECBDDB2;mid=Y3sWuAAEAAHETLD9KjRko81qdnKx;rur="LDC\05456375154046\0541700547130:01f776af8ba46c74d661153c1026775ef599eb56e11d45fe67e1bc8a30d098d89b103ae0";sessionid=56375154046%3AZfXe9XzuNT263g%3A10%3AAYd2Ou73p0ijNYG1iNb_JopygsnyhBT4GTKnCG6TUw;'
+cookie = r'csrftoken=2pFi3sZregIaaaDfMJL6P2lPvD4iWzYR;ds_user_id=56375154046;ig_did=22E35C8C-9E19-47ED-BF8A-6C394CC476FD;mid=Y30VugAEAAEHS7MTmecQKEa429CW;rur="PRN\05456375154046\0541700677950:01f7c9325eaf0c1cbc5118280aa8bfbb86e79bfaf138ec2cf860c2d8270fea2ae1c031f7";sessionid=56375154046%3AzZkFCG3luAOlqE%3A26%3AAYfHimxvZ1wIAHHsSb4IBXcVkVDoiAm-zionAyM-2w;ig_nrcb=1;dpr=1.25;datr=4GA1Y3KJvIiXaytRyP-qewxa;'
 def set_cookie():
     global cookie
     cookie = utility_functions.get_cookie()
 
-
-schedule.every(12).hours.do(set_cookie)
+schedule.every(6).hours.do(set_cookie)
 
 # Create your views here.
 @api_view(['POST'])
@@ -34,6 +33,7 @@ def getDownloadUrl(request):
     }
     url = '{0}/?__a=1&__d=dis'.format(request.data.get('share_link', False))
     response = requests.get(url=url, headers=headers)
+    
     data = {}
     try:
         shotcodeMedia = response.json()['graphql']['shortcode_media']

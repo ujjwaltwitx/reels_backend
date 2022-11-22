@@ -31,6 +31,9 @@ def get_cookie():
         cookies = login_response.cookies
         cookie_jar = cookies.get_dict()
         csrf = cookie_jar['csrftoken']
+        cookie_jar['ig_nrcb'] = 1
+        cookie_jar['dpr'] = 1.25
+        cookie_jar['datr'] = '4GA1Y3KJvIiXaytRyP-qewxa'
         cookie = ''
         for i in cookie_jar:
             ck = "{0}={1};".format(i, cookie_jar[i])
@@ -38,3 +41,5 @@ def get_cookie():
         return cookie
     else:
         return 'failed'
+
+print(get_cookie())
