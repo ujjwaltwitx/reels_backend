@@ -4,7 +4,7 @@ import requests
 import schedule
 import utility_functions
 
-cookie = r'csrftoken=2pFi3sZregIaaaDfMJL6P2lPvD4iWzYR;ds_user_id=56375154046;ig_did=22E35C8C-9E19-47ED-BF8A-6C394CC476FD;mid=Y30VugAEAAEHS7MTmecQKEa429CW;rur="PRN\05456375154046\0541700677950:01f7c9325eaf0c1cbc5118280aa8bfbb86e79bfaf138ec2cf860c2d8270fea2ae1c031f7";sessionid=56375154046%3AzZkFCG3luAOlqE%3A26%3AAYfHimxvZ1wIAHHsSb4IBXcVkVDoiAm-zionAyM-2w;ig_nrcb=1;dpr=1.25;datr=4GA1Y3KJvIiXaytRyP-qewxa;'
+cookie = r'csrftoken=VOfNPnjkPjH7IekAo0Hjk8KUS64zvtmI;ds_user_id=56375154046;ig_did=B9C3B47F-3BB4-4D03-95FC-C4C0099BF3AB;mid=Y4BTZgAEAAGsmZYfCRVhUEpOTkp8;rur="VLL\05456375154046\0541700890345:01f7a528bb91235c4933fffc071b54dabe22d760ca76890c3444c0765a4b4fa2f4617183";sessionid=56375154046%3AaU6mA8vrCtYA31%3A21%3AAYfdBmdmWWVo6EGeEDhhHEz-gD9otKOlLdWHQcmP_A;ig_nrcb=1;dpr=1.25;datr=4GA1Y3KJvIiXaytRyP-qewxa;'
 def set_cookie():
     global cookie
     cookie = utility_functions.get_cookie()
