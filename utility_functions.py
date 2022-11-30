@@ -12,7 +12,7 @@ def get_cookie():
 
     payload = {
         'username': 'reel_iterator',
-        'enc_password': f'#PWD_INSTAGRAM_BROWSER:0:{time}:ujjwal2887#@',
+        'enc_password': f'#PWD_INSTAGRAM_BROWSER:0:{time}:2887#@ujjwal',
         'queryParams': {},
         'optIntoOneTap': 'false'
     }

@@ -4,12 +4,12 @@ import requests
 import schedule
 import utility_functions
 
-cookie = r'csrftoken=VOfNPnjkPjH7IekAo0Hjk8KUS64zvtmI;ds_user_id=56375154046;ig_did=B9C3B47F-3BB4-4D03-95FC-C4C0099BF3AB;mid=Y4BTZgAEAAGsmZYfCRVhUEpOTkp8;rur="VLL\05456375154046\0541700890345:01f7a528bb91235c4933fffc071b54dabe22d760ca76890c3444c0765a4b4fa2f4617183";sessionid=56375154046%3AaU6mA8vrCtYA31%3A21%3AAYfdBmdmWWVo6EGeEDhhHEz-gD9otKOlLdWHQcmP_A;ig_nrcb=1;dpr=1.25;datr=4GA1Y3KJvIiXaytRyP-qewxa;'
+cookie = r'csrftoken=dDi8TdHefg2YkI1Gg5GlW6jzTjyG3VMZ;ds_user_id=56375154046;ig_did=1B577566-6737-4BF8-B233-46BABCD0D51E;mid=Y4b37QAEAAGrkvSn4X7UYMk-HcbN;rur="LDC\05456375154046\0541701325679:01f7ba10f9221b0cb7c14255f59b8c9c6dbedccf127da04c505362a942d1827674b62ca7";sessionid=56375154046%3A73dtjLO36XUvfC%3A24%3AAYd26f6Xgwb-pfv4jFGmTdcF7-Vt49sJqlnnKIxddQ;ig_nrcb=1;dpr=1.25;datr=4GA1Y3KJvIiXaytRyP-qewxa;'
 def set_cookie():
     global cookie
     cookie = utility_functions.get_cookie()
 
-schedule.every(6).hours.do(set_cookie)
+schedule.every(12).hours.do(set_cookie)
 
 # Create your views here.
 @api_view(['POST'])
